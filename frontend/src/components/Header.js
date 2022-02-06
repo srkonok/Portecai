@@ -25,7 +25,11 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                     
                         <Route render={({history}) => <SearchBox history={history} />} />
+                        
                         <Nav className="ml-auto">
+                        <LinkContainer to='/findTutor'>
+                            <Nav.Link ><i className=''> </i>Find Tutor</Nav.Link>
+                        </LinkContainer>
                             <LinkContainer to="/cart">
                                 <Nav.Link ><i className='fas fa-shopping-cart'> </i> Cart</Nav.Link>
                             </LinkContainer>
@@ -48,7 +52,7 @@ const Header = () => {
                                    <NavDropdown.Item>Course</NavDropdown.Item>
                                 </LinkContainer>
                                 <LinkContainer to='/admin/orderlist'>
-                                   <NavDropdown.Item>Orders </NavDropdown.Item>
+                                   <NavDropdown.Item>Selling Details </NavDropdown.Item>
                                 </LinkContainer>
                                 </NavDropdown>     
                             )}

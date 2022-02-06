@@ -114,7 +114,7 @@ const ProfileScreen = ({location,history}) => {
                 <Table striped bordered hover responsive className='table-sm'>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Course ID</th>
                             <th>DATE</th>
                             <th>TOTAL</th>
                             <th>PAID</th>
@@ -138,7 +138,11 @@ const ProfileScreen = ({location,history}) => {
                                     </LinkContainer>
                                 </td>
                                 <td>
-                                       <a href="https://www.youtube.com/watch?v=Lgxgm-T9cgA&list=PL0b6OzIxLPbx-BZTaWu_AF7hsKo_Fvsnf"><Button className='btn-sm' variant='light'>Go to course</Button></a> 
+                                {order.isPaid? <a href="https://www.youtube.com/watch?v=Lgxgm-T9cgA&list=PL0b6OzIxLPbx-BZTaWu_AF7hsKo_Fvsnf"><Button className='btn-sm' variant='light'>Go to course</Button></a>:
+                                <LinkContainer to={`/order/${order._id}`}>
+                                <Button className='btn-sm' variant='light'>Not Paid</Button> </LinkContainer>
+                                }
+                                       
                                     
                                 </td>
                             </tr>

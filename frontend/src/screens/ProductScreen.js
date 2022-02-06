@@ -60,7 +60,7 @@ const ProductScreen = ({history,match}) => {
            <Col md={8} className='product_image'>
                <Image src={product.image} alt={product.name} fluid/>
            </Col>
-           <Col md={6}>
+           <Col md={7}>
                <ListGroup variant='flush'>
                    <ListGroup.Item>
                        <h2>
@@ -75,14 +75,18 @@ const ProductScreen = ({history,match}) => {
                        />
                    </ListGroup.Item>
                    <ListGroup.Item>
-                       Price:${product.price}
+                       Price:৳{product.price}
+                   </ListGroup.Item>
+                   <ListGroup.Item>
+                       Mentor: {product.brand}
                    </ListGroup.Item>
                    <ListGroup.Item>
                        Description:  {product.description}
                    </ListGroup.Item>
                </ListGroup>
            </Col>
-           <Col md={6}>
+           <Col md={1}></Col>
+           <Col md={4}>
                <Card>
                    <ListGroup variant='flush'>
                        <ListGroup.Item>

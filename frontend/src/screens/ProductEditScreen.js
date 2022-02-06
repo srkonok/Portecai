@@ -20,6 +20,7 @@ const ProductEditScreen = ({match,history}) => {
      const [category,setCategory]=useState('')
      const [countInStock,setCountInStock]=useState(0)
      const [description,setDescription]=useState('')
+     const [link,setLink]=useState('')
      const [uploading,setUploading]= useState(false)
 
      const dispatch = useDispatch()
@@ -45,6 +46,9 @@ const ProductEditScreen = ({match,history}) => {
                     setCategory(product.category)
                     setCountInStock(product.countInStock)
                     setDescription(product.description)
+                    setLink(product.link)
+                    
+                    
                     
                 }
             }
@@ -52,7 +56,7 @@ const ProductEditScreen = ({match,history}) => {
             
         
          
-     }, [dispatch, history, product._id, product.brand, product.category, product.countInStock, product.description, product.image, product.name, product.price, productId, successUpdate])
+     }, [dispatch, history, product._id, product.brand, product.category, product.countInStock, product.description, product.image, product.name, product.price,product.link, productId, successUpdate])
 
 
      const uploadFileHandler=async(e)=>{
@@ -82,7 +86,7 @@ const ProductEditScreen = ({match,history}) => {
          e.preventDefault()
         dispatch(updateProduct({
             _id:productId,
-            name,price,image,brand,category,description,countInStock
+            name,price,image,brand,category,description,countInStock,link
         }))
      }
     return (
@@ -91,7 +95,7 @@ const ProductEditScreen = ({match,history}) => {
                 Go Back
             </Link>
             <FormContainer>
-            <h1>Edit Product</h1> 
+            <h1>Edit Course</h1> 
                 {loadingUpdate && <Loader/>}
                 {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
                  
@@ -109,16 +113,15 @@ const ProductEditScreen = ({match,history}) => {
       
                         </Form.Control>
                     </Form.Group>
-
-                    <Form.Group controlId='Price'>
+                    <Form.Group controlId='Link'>
                         <Form.Label>
-                            Price:
+                            Link
                         </Form.Label>
-                        <Form.Control type='number' placeholder='Enter price' value={price}
-                        onChange={(e)=>setPrice(e.target.value)}>
+                        <Form.Control type='text' placeholder='Enter Description' value={link}
+                        onChange={(e)=>setDescription(e.target.value)}>
                         </Form.Control>
                     </Form.Group>
-                    
+
                     <Form.Group controlId='Image'>
                         <Form.Label>
                             Image
@@ -129,8 +132,17 @@ const ProductEditScreen = ({match,history}) => {
                         <Form.File id='image-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
                     {uploading && <Loader/>}
                     </Form.Group>
+
+                    <Form.Group controlId='Price'>
+                        <Form.Label>
+                            Price:
+                        </Form.Label>
+                        <Form.Control type='number' placeholder='Enter price' value={price}
+                        onChange={(e)=>setPrice(e.target.value)}>
+                        </Form.Control>
+                    </Form.Group>
                     
-                    
+                                       
                     <Form.Group controlId='Brand'>
                         <Form.Label>
                             Teacher:
@@ -166,6 +178,7 @@ const ProductEditScreen = ({match,history}) => {
                         onChange={(e)=>setDescription(e.target.value)}>
                         </Form.Control>
                     </Form.Group>
+                    
                     
                     
                     

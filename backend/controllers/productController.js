@@ -63,6 +63,7 @@ const createProduct=asyncHandler(async(req,res)=>{
         category:'Category',
         numReviews:0,
         description:'Sample description', 
+        link:'link'
     })
     const createdProduct= await product.save()
     res.status(201).json(createdProduct)
@@ -73,7 +74,7 @@ const createProduct=asyncHandler(async(req,res)=>{
 //@access Private/admin
 
 const updateProduct=asyncHandler(async(req,res)=>{
-  const {name,price,description,image,brand,category,countInStock}=req.body
+  const {name,price,description,image,brand,category,countInStock,link}=req.body
 
   const product = await Product.findById(req.params.id)
   

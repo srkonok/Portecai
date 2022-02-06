@@ -72,9 +72,12 @@ const OrderScreen = ({match,history}) => {
     const deliverHandler=()=>{
         dispatch(deliverOrder(order))
     }
+    const goToCourse=()=>{
+        dispatch(deliverOrder(order))
+    }
 
     return loading?<Loader/>:error ? <Message variant='danger'>{error}</Message>:<>
-    <h1>Order {order._id}</h1>
+    <h1>Course No. {order._id}</h1>
     <Row>
              <Col md={8}>
                  <ListGroup variant ='flush'>
@@ -88,7 +91,7 @@ const OrderScreen = ({match,history}) => {
                              {order.shippingAddress.address},{order.shippingAddress.city}
                              ,{order.shippingAddress.postalCode},{order.shippingAddress.country}
                          </p>
-                         
+
                      </ListGroup.Item>
                      <ListGroup.Item>
                         <h2>Payment Method</h2>
@@ -161,12 +164,13 @@ const OrderScreen = ({match,history}) => {
                                      onSuccess={successPaymentHandler}/>
                                  )}
                              </ListGroup.Item>
-                         )}   
+                         )} 
+                         {order.isPaid && <a href="https://www.youtube.com/watch?v=Lgxgm-T9cgA&list=PL0b6OzIxLPbx-BZTaWu_AF7hsKo_Fvsnf"><Button className='btn btn-block' variant='light'>Go to course</Button></a>}    
                          {loadingDeliver && <Loader/>}
                          {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                              <ListGroup.Item>
                                 <Button type='Button' className='btn btn-block' onClick={deliverHandler}>
-                                    Mark as Delivered
+                                    Give Access
                                 </Button>
                              </ListGroup.Item>
                          )}                  

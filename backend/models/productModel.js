@@ -60,6 +60,10 @@ const productSchema=mongoose.Schema({
         required:true,
         default:0
     },
+    link:{
+        type:String,
+        required:false,
+    },
 
 },{
     timestamps:true
